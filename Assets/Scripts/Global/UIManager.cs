@@ -17,6 +17,9 @@ public class UIManager : Singleton<UIManager>
         menuPanel.SetActive(true);
     }
 
+    /// <summary>
+    /// This button is used to start the game.
+    /// </summary>
     public void StartGameButton()
     {
         GameManager.Instance.StartGame();
@@ -24,6 +27,9 @@ public class UIManager : Singleton<UIManager>
         gamePanel.SetActive(true);
     }
 
+    /// <summary>
+    /// This button is used to restart the game.
+    /// </summary>
     public void RestartLevelButton()
     {
         GameManager.Instance.RestartLevel();
@@ -31,6 +37,9 @@ public class UIManager : Singleton<UIManager>
         gamePanel.SetActive(true);
     }
 
+    /// <summary>
+    /// This button is used to go to the next level.
+    /// </summary>
     public void NextLevelButton()
     {
         GameManager.Instance.NextLevel();
@@ -38,18 +47,27 @@ public class UIManager : Singleton<UIManager>
         gamePanel.SetActive(true);
     }
 
+    /// <summary>
+    /// Called when the player fails.
+    /// </summary>
     public void OnFail()
     {
         HideAllPanel();
         failPanel.SetActive(true);
     }
 
+    /// <summary>
+    /// Called when the player succeeds.
+    /// </summary>
     public void OnSuccess()
     {
         HideAllPanel();
         successPanel.SetActive(true);
     }
 
+    /// <summary>
+    /// Hides all panels.
+    /// </summary>
     public void HideAllPanel()
     {
         menuPanel.SetActive(false);

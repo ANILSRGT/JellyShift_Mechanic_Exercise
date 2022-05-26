@@ -27,12 +27,18 @@ public class GameManager : Singleton<GameManager>
         LoadLevel();
     }
 
+    /// <summary>
+    /// Starts the game.
+    /// </summary>
     public void StartGame()
     {
         gameStatus = GameStatus.PLAY;
         Events.OnGameStart?.Invoke();
     }
 
+    /// <summary>
+    /// Create the required level from the levelPrefabs array.
+    /// </summary>
     public void LoadLevel()
     {
         if (currentLevel)
@@ -50,17 +56,26 @@ public class GameManager : Singleton<GameManager>
         currentLevel.name = levelPrefabs[currentLevelIndex].name;
     }
 
+    /// <summary>
+    /// Loads the current level.
+    /// </summary>
     public void RestartLevel()
     {
         SceneManager.LoadScene(0);
     }
 
+    /// <summary>
+    /// Loads the next level.
+    /// </summary>
     public void NextLevel()
     {
         PlayerPrefs.SetInt("LastLevelIndex", ++currentLevelIndex);
         SceneManager.LoadScene(0);
     }
 
+    /// <summary>
+    /// Fail the level.
+    /// </summary>
     public void Fail()
     {
         gameStatus = GameStatus.FAIL;
@@ -68,6 +83,9 @@ public class GameManager : Singleton<GameManager>
         UIManager.Instance.OnFail();
     }
 
+    /// <summary>
+    /// Successful completion of the level.
+    /// </summary>
     public void Success()
     {
         gameStatus = GameStatus.SUCCESS;
